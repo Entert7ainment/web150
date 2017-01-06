@@ -1,6 +1,6 @@
 // this is a script file
 
-var firstname = 'elvira';
-var lastname = 'davison';
+var firstname = 'Elvira';
+var lastname = 'Davison';
 var yearOfStudy = '1';
-var goal = 'web designer';
+var goal = 'web design';
