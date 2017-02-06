@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <button onclick="shuttertwocards()">
+   shutter two cards
+    </button>
+<button onclick="blackjack()">
+    three hand cards
+ </button>   
+<ul id="cards">    
+
+</ul>
+
+ <script>     
+
+     var myNewDeck=[
+       {value:"2",suit:"Diamonds",score:2},
+
+       {value:"3",suit:"Diamonds",score:3},
+
+       {value:"4",suit:"Diamonds",score:4},
+
+       {value:"5",suit:"Diamonds",score:5},
+
+       {value:"6",suit:"Diamonds",score:6},
+
+       {value:"7",suit:"Diamonds",score:7},
+
+       {value:"8",suit:"Diamonds",score:8},
+
+       {value:"9",suit:"Diamonds",score:9},
+
+       {value:"10",suit:"Diamonds",score:10},
+         
+         {value:"A",suit:"Diamonds",score:11},
+         
+         {value:"K",suit:"Diamonds",score:10},
+         
+         {value:"Q",suit:"Diamonds",score:10},
+
+       {value:"J",suit:"Diamonds",score:10},
+
+       {value:"2",suit:"Clubs",score:2},
+
+       {value:"3",suit:"Clubs",score:3},
+
+       {value:"4",suit:"Clubs",score:4},
+
+       {value:"5",suit:"Clubs",score:5},
+
+       {value:"6",suit:"Clubs",score:6},
+
+       {value:"7",suit:"Clubs",score:7},
+
+       {value:"8",suit:"Clubs",score:8},
+
+       {value:"9",suit:"Clubs",score:9},
+
+       {value:"10",suit:"Clubs",score:10},
+         
+         {value:"A",suit:"Clubs",score:11},
+         
+       {value:"K",suit:"Clubs",score:10},
+         
+         {value:"Q",suit:"Clubs",score:10},
+         
+         {value:"J",suit:"Clubs",score:10},
+         
+       {value:"2",suit:"Hearts",score:2},
+
+       {value:"3",suit:"Hearts",score:3},
+
+       {value:"4",suit:"Hearts",score:4},
+
+       {value:"5",suit:"Hearts",score:5},
+
+       {value:"6",suit:"Hearts",score:6},
+
+       {value:"7",suit:"Hearts",score:7},
+
+       {value:"8",suit:"Hearts",score:8},
+
+       {value:"9",suit:"Hearts",score:9},
+
+       {value:"10",suit:"Hearts",score:10},
+         
+         {value:"A",suit:"Hearts",score:1},
+         
+       {value:"K",suit:"Hearts",score:10},
+         
+         {value:"Q",suit:"Hearts",score:10},
+         
+         {value:"J",suit:"Hearts",score:10},
+       
+       {value:"2",suit:"Spades",score:2},
+
+       {value:"3",suit:"Spades",score:3},
+
+        {value:"4",suit:"Spades",score:4},
+
+        {value:"5",suit:"Spades",score:5},
+
+        {value:"6",suit:"Spades",score:6},
+
+        {value:"7",suit:"Spades",score:7},
+
+        {value:"8",suit:"Spades",score:8},
+
+        {value:"9",suit:"Spades",score:9},
+
+        {value:"10",suit:"Spades",score:10},
+         
+         {value:"A",suit:"Spades",score:1},
+         
+         {value:"K",suit:"Spades",score:10},
+         
+       {value:"Q",suit:"Spades",score:10},
+         
+         {value:"J",suit:"Spades",score:10}
+        
+   ];
+     //aces can be counted as 1 point or 11 points. All other cards are counted as the numeric value shown on the card. If player lose with two cards increase to three cards. 
+
+     function shuttertwocards(){
+
+         var listcard=document.getElementById("cards");
+
+         listcard.innerHTML=" ";
+         
+
+         this.score=0;
+
+         for(i=0;i<2;i++){
+
+             var number=Math.floor(Math.random() * 52);
+
+             var newCard=myNewDeck[number];
+
+             this.score+=newCard.score;
+
+             var show=document.createElement("li");
+
+             show.innerHTML=newCard.value+" "+"of"+" "+newCard.suit;          
+
+            listcard.appendChild(show);            
+
+         }   
+
+         
+         if (this.score<21){
+
+         var showscore=document.createElement("p");
+
+         showscore.innerHTML="You lose! Your total score is "+this.score+".";
+
+          listcard.appendChild(showscore); 
+
+           }
+     }
+// Updates the the value of the cards the player has in their hand
+
+    function blackjack(){
+
+         var listcard=document.getElementById("cards");
+
+         listcard.innerHTML=" ";
+         this.score=0;
+
+         for(i=0;i<3;i++){
+
+             var number=Math.floor(Math.random() * 52);
+
+             var newCard=myNewDeck[number];
+
+             this.score+=newCard.score;
+
+             var show=document.createElement("li");
+
+             show.innerHTML=newCard.value+" "+"of"+" "+newCard.suit;          
+
+            listcard.appendChild(show);              
+
+         }
+
+         if (this.score>21){
+
+         var showscore=document.createElement("p");
+
+         showscore.innerHTML="You lose! Your total score is "+this.score+".";
+
+          listcard.appendChild(showscore); 
+
+           }
+
+         
+
+         else{
+
+         var showscore=document.createElement("p");
+
+         showscore.innerHTML="You win! Your total score is "+this.score+".";
+
+          listcard.appendChild(showscore); 
+
+           }         
+
+     }    
+
+
+
+</script>      
+
+</body>
+
+
+</html>
