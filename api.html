@@ -1,0 +1,75 @@
+<htm>
+<head>
+ 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+    
+    </head>
+
+<body>
+    
+  <form>
+City: <input type=text name=city><button>submit</button>
+      
+    
+    </form>  
+     Climate:<p>
+
+    </p>
+
+    <div id="climate"></div>
+    
+    </body>
+
+
+ 
+<script>
+ $("button").on('click', function(e){
+  e.preventDefault();          
+    //console.log("click");
+     
+   
+     var city=$('input[name="city"]').val();
+     //console.log(city);
+     var URL = "http://api.openweathermap.org/data/2.5/forecast?q="+city+",us&APPID=Cbf02161bb3435b7c435b8af4eb14f7d&units=imperial";
+     //console.log(URL)
+    
+     $.get(URL,function(data,status){
+        $("#climate").html("  ");
+         if (status =="success"){
+     
+    for(i=0;i <data.list.length; i+= 8){  
+   
+    var climate_date = new Date(data.list[i].dt_txt);
+    var maxtemp=data.list[i].main.temp_max;
+
+    var mintemp= data.list[i].main.temp_min;
+        $("#climate").append("<li>date = " + climate_date);  
+   
+ $("#climate").append("<li>maxtemp = " + maxtemp);
+    
+ $("#climate").append("<li>mintemp = " +mintemp);
+    
+ $("#climate").append("<li>humidity = " + data.list[i].main.humidity+"%");
+    
+ $("#climate").append("<li>weather = " + data.list[i].weather[0].description);    
+ $("#climate").append("<img src=http://openweathermap.org/img/w/"+data.list[i].weather[0].icon+".png>");  
+         
+ //console.log('1 -success')
+//console.log(response)
+ //handle a successful request
+//console.log()
+ }
+        }else{
+//request failed
+
+
+} 
+
+});
+
+        });     
+    
+    
+    </script>
+
+</htm>
