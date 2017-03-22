@@ -1,0 +1,108 @@
+<html>
+
+<head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>   
+
+    
+
+</head>
+
+<body>
+
+   <form>
+
+    City: <input type="text" name="city"><button>Search</button>   
+
+    </form> 
+
+    Forecast:<p>
+
+    </p>
+
+    <div id="forecast"></div>
+
+   
+
+</body>
+
+<script>
+
+ $("button").on('click',function(e){
+
+     e.preventDefault();
+
+    
+
+     var city= $('input[name="city"]').val();
+
+   
+
+  var URL="http://api.openweathermap.org/data/2.5/forecast?q="+city+",us&APPID=6b51f8761746d1b09ed2c1c09b447af7&units=imperial";
+
+       
+
+$.getJSON(URL,function(data,status) {
+$("#forecast").html(" ");
+ if (status == "success") {
+ for(i=0;i <data.list.length; i+= 8){
+       var forecast_date = new Date(data.list[i].dt_txt);
+
+    var maxtemp=data.list[i].main.temp_max;
+
+    var mintemp= data.list[i].main.temp_min;
+   // handle successful request
+     $("#forecast").append("<li>date = " + forecast_date);       
+
+      $("#forecast").append("<li>maxtemp = " + maxtemp);
+
+     $("#forecast").append("<li>mintemp = " + mintemp);
+
+      $("#forecast").append("<li>humidity = " + data.list[i].main.humidity+"%");
+
+      $("#forecast").append("<li>description = " + data.list[i].weather[0].description);
+
+    $("#forecast").append("<img src=http://openweathermap.org/img/w/"+data.list[i].weather[0].icon+".png>");  
+   
+
+ /*           
+
+    console.log(data.list[0].dt_text)
+
+console.log(data.list[0].main.temp_max)
+
+console.log(data.list[0].main.temp_min)
+
+console.log(data.list[0].main.humidity)
+
+console.log(data.list[0].weather[0].description)
+
+console.log(data.list[0].weather[0].icon)
+
+*/
+
+     
+
+ }
+
+
+ } else {
+
+   // request failed
+
+ }
+
+});
+
+//console.log('2-continue')
+
+
+
+
+ });
+
+  
+
+    </script>
+
+</html>
