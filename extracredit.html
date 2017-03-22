@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+   
+<canvas id= MsPacMan height=640 weight=480>
+
+<script>
+var canvas = document.getElementById("MsPacMan");
+var context = canvas.getContext('2d');
+
+
+    context.beginPath();
+    context.fillStyle = "#66ff33";
+    context.shadowBlur = 20;
+    context.shadowColor = "gold";
+    //top and bottom of mouth
+    var start = .3 * Math.PI;
+    var end = 1.8 * Math.PI;
+    context.arc(100,100,90, start, end);
+    context.lineTo(100, 100);
+    context.fill();
+    
+    context.beginPath();
+    context.fillStyle = "pink";
+    context.shadowBlur = 20;
+    context.shadowColor = "gold";
+    context.arc(100, 60, 10, 0, Math.PI * 2);
+    context.fill();
+    
+    context.beginPath();
+    context.fillSTyle = "pink";
+    context.moveTo(60, 40);
+    context.lineTo(50, 0);
+    context.lineTo(20, 60);
+    context.lineTo(10, 20);
+    context.fill();
+
+ //Var drawMsPacMan = function(x,y){
+    //context.beginPath();
+    //context.fillStyle = "#FF0";
+//top and bottom of mouth
+    //var start = .3 * Math.PI;
+    //var end = 1.8 * Math.PI;
+   // context.arc(x, y, 90, start, end);
+    //context.lineTo(x, y);
+    //context.fill();
+    
+    //context.beginPath();
+    //context.fillStyle = "blue";
+    //context.arc(x, y, 40, 10, 0, Math.PI * 2);
+    //context.fill();
+    
+    //context.beginPath();
+    //context.fillSTyle = "pink";
+    //context.moveTo(x - 40, y - 60);
+    //context.lineTo(x - 50, y - 100);
+    //context.lineTo(x - 80, y - 40);
+    //context.lineTo(x - 90, y - 80);
+    //context.fill();
+
+
+//};
+    </script>
+</canvas>
+   
+</html>
