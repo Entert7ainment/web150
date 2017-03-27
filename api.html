@@ -27,8 +27,12 @@ City: <input type=text name=city><button>submit</button>
   e.preventDefault();          
     //console.log("click");
      
-   
-     var city=$('input[name="city"]').val();
+    var city=$('input[name="city"]').val();
+ if (city.length == 0) {
+ alert("please enter a city name")
+ return false;
+ } 
+     
      //console.log(city);
      var URL = "http://api.openweathermap.org/data/2.5/forecast?q="+city+",us&APPID=Cbf02161bb3435b7c435b8af4eb14f7d&units=imperial";
      //console.log(URL)
@@ -38,7 +42,7 @@ City: <input type=text name=city><button>submit</button>
          if (status =="success"){
      
     for(i=0;i <data.list.length; i+= 8){  
-   
+  
     var climate_date = new Date(data.list[i].dt_txt);
     var maxtemp=data.list[i].main.temp_max;
 
